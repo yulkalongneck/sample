@@ -23,7 +23,7 @@ namespace TopRecords.Classes
         public string ID { get; set; }
 
 
-        private static string ParseRecord(string s, int part)
+        private static dynamic ParseRecord(string s, int part)
         {
             int index = s.IndexOf(':');
             string result = String.Empty;
@@ -36,11 +36,11 @@ namespace TopRecords.Classes
                    result = s.Substring(index + 1).Trim();
                 }               
             }
-            catch (Exception ex)
+            catch 
             {
                 Console.WriteLine("invalid json format No JSON object could be decoded");
                 Console.WriteLine("THIS IS NOT JSON");
-                throw new Exception(ex.Message);
+                return -1;
             }
             return result;
         }

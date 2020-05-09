@@ -38,6 +38,8 @@ namespace TopRecords.DataFiles
                         try
                         {
                             Record record = new Record(line.Replace(@"\", ""));
+                            //remove any previously added record with score equal to the current record.Score
+
                             this.Records.RemoveAll(r => r.Score == record.Score);
 
                             // add the current record
@@ -48,8 +50,7 @@ namespace TopRecords.DataFiles
                             Console.WriteLine("invalid json format No JSON object could be decoded");
                             Console.WriteLine("THIS IS NOT JSON");
                         }
-                        //remove any previously added record with score equal to the current record.Score
-                        
+                     
                     }
                 }
       
