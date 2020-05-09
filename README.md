@@ -1,3 +1,7 @@
+## TEST FILE IN /TopRecords/..
+(Console.WriteLine(Path.Combine(Environment.CurrentDirectory, @"/", filename));)
+
+
 # Highest Scores
 ​
 ### Problem Text:
