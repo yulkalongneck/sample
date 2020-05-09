@@ -70,11 +70,10 @@ namespace TopRecords.Files
             try
             {
                 topRecords = this.Records.Take(top).ToList();
-
                 //check if json string is a valid json; if false- abort;
                 foreach (var r in topRecords)
                 {
-                    JsonValue.Parse(r.ID);
+                    JsonValue.Parse(r.JsonString);
                 }  
             }
             catch
@@ -94,7 +93,7 @@ namespace TopRecords.Files
             List<Result> results = new List<Result>();
             foreach (var r in topRecords)
             {
-                results.Add(new Result(r.Score, r.ID)); 
+                results.Add(new Result(r.Score, r.JsonString)); 
             }
             var json = JsonConvert.SerializeObject(results, Formatting.Indented);
             Console.WriteLine(json);

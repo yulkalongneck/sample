@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <Folder Include="Classes\" />
-    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Json.Net" Version="1.0.22" />

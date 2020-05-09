@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using TopRecords.Files;
 
 namespace TopRecords
@@ -7,16 +8,19 @@ namespace TopRecords
     {
         static int Main(string[] args)
         {
-            // read the string filename
-            string input = Console.ReadLine();
-            string filename = input.Split(' ')[0]; //highest score_recs.data
-            int nScores = Convert.ToInt32(input.Split(' ')[1]);
+            Console.WriteLine("Please insert file name");
+            var filename = Console.ReadLine();
+            Console.WriteLine(Path.Combine(Environment.CurrentDirectory, @"./", filename));
+
+            Console.WriteLine("Number of top results (int):");
+            var nScores = Convert.ToInt32(Console.ReadLine());
+            //assume that inputs are valid
 
             //read file
             File file = new File(filename);
             file.GetFile();
 
-            //possible sorting ASC. Keeping it as a public method
+            // Keeping it as a public method
             file.SortDesc();
 
             // get top N scores 
