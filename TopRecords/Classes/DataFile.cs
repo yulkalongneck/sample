@@ -8,17 +8,17 @@ using Newtonsoft.Json;
 
 namespace TopRecords.DataFiles
 {
-    //File has Name, many Records
+    //File has path, many Records
     public class DataFile
     {
-        public DataFile(string name)
+        public DataFile(string filePath)
         {
-            Name = name;
+            FilePath = filePath;
             Records = new List<Record>();
         }
 
         public List<Record> Records { get; set; }
-        public string Name { get; set; }
+        public string FilePath { get; set; }
 
         
 
@@ -29,7 +29,7 @@ namespace TopRecords.DataFiles
             {
                 // using StreamReader read/import a file
                 // and add each line to a string list
-                using (StreamReader reader = new StreamReader(Path.Combine(Environment.CurrentDirectory, @"/", this.Name)))
+                using (StreamReader reader = new StreamReader(this.FilePath))
                 {
                     string line;
                     // Read line by line  
@@ -73,7 +73,7 @@ namespace TopRecords.DataFiles
                 //check if json string is a valid json; if false- abort;
                 foreach (var r in topRecords)
                 {
-                    JsonValue.Parse(r.JsonString);
+                    r.ID = JsonValue.Parse(r.JsonString)["id"];
                 }  
             }
             catch
@@ -90,13 +90,16 @@ namespace TopRecords.DataFiles
         //write Results to a console;
         private static void WriteTopResults(List<Record> topRecords)
         {
-            List<Result> results = new List<Result>();
-            foreach (var r in topRecords)
+            try
             {
-                results.Add(new Result(r.Score, r.JsonString)); 
+                var json = JsonConvert.SerializeObject(topRecords, Formatting.Indented);
+                Console.WriteLine(json);
             }
-            var json = JsonConvert.SerializeObject(results, Formatting.Indented);
-            Console.WriteLine(json);
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
         }
     }
 }
