@@ -1,4 +1,6 @@
 ﻿using System;
+using Newtonsoft.Json;
+
 namespace TopRecords.Classes
 {
     //Record belongs to a file, has a score and unique id
@@ -7,15 +9,19 @@ namespace TopRecords.Classes
         public Record(string line)
         {
             //find score
-            Score = Convert.ToInt32(ParseRecord(line, 1));
-
-            //temp assign the json string object as an id;
-            //it could be a DataSet object that has its own prioperties and methods;
+            Score = Convert.ToInt32(ParseRecord(line, 1));    
             JsonString = ParseRecord(line, 2);
         }
 
+        [JsonPropertyAttribute("score")]
         public int Score { get; set; }
+
+        [JsonIgnore]
         public string JsonString { get; set; }
+
+        [JsonPropertyAttribute("id")]
+        public string ID { get; set; }
+
 
         private static string ParseRecord(string s, int part)
         {
