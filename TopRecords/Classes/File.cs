@@ -3,6 +3,7 @@ using System.IO;
 using System.Collections.Generic;
 using System.Linq;
 using TopRecords.Classes;
+using System.Json;
 
 namespace TopRecords.Files
 {
@@ -58,6 +59,28 @@ namespace TopRecords.Files
             }
         }
 
+        public dynamic GetTop(int top)
+        {
+            List<Record> result = new List<Record>();
+            try
+            {
+                result = this.Records.Take(top).ToList();
 
+                // write result:  top N if Record.Data is a valid json object
+                foreach (var r in result)
+                {
+                    var valid = JsonValue.Parse(r.ID);
+                }
+                
+            }
+            catch
+            {
+                Console.WriteLine("invalid json format No JSON object could be decoded");
+                Console.WriteLine("THIS IS NOT JSON");
+                return -1;
+            }
+
+            return result;
+        }
     }
 }

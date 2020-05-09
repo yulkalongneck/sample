@@ -6,15 +6,13 @@ namespace TopRecords.Classes
         public Record(string line)
         {
             //find score
-            Score = Convert.ToInt32(ParseRecord(line,1));
+            Score = Convert.ToInt32(ParseRecord(line, 1));
 
             //temp assign the json string object as an id
             ID = ParseRecord(line, 2);
         }
 
-        //json serialize to score
         public int Score { get; set; }
-        //json serialize to id
         public string ID { get; set; }
 
         private static string ParseRecord(string s, int part)
@@ -25,10 +23,10 @@ namespace TopRecords.Classes
             {
                 if(part == 1)
                 {
-                    result = s.Substring(0, index);
+                    result = s.Substring(0, index).Trim();
                 } else if(part == 2)
                 {
-                   result = s.Substring(index + 1);
+                   result = s.Substring(index + 1).Trim();
                 }
                
             }
