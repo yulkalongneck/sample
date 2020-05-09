@@ -1,3 +1,25 @@
+```
+Console Input/Output:
+Please insert full file path:
+/Users/julka/Desktop/highest_score_recs.data
+Please insert max n of results (int):
+3
+[
+  {
+    "score": 13214012,
+    "id": "085a11e1b82b441184f4a193a3c9a13c"
+  },
+  {
+    "score": 11446512,
+    "id": "84a0ccfec7d1475b8bfcae1945aea8f0"
+  },
+  {
+    "score": 11269569,
+    "id": "7ec85fe3aa3c4dd599e23111e7abf5c1"
+  }
+]
+```
+
 # Highest Scores
 ​
 ### Problem Text:
