@@ -1,6 +1,7 @@
 ﻿using System;
 namespace TopRecords.Classes
 {
+    //Record belongs to a file, has a score and unique id
     public class Record
     {
         public Record(string line)
@@ -8,12 +9,13 @@ namespace TopRecords.Classes
             //find score
             Score = Convert.ToInt32(ParseRecord(line, 1));
 
-            //temp assign the json string object as an id
-            ID = ParseRecord(line, 2);
+            //temp assign the json string object as an id;
+            //it could be a DataSet object that has its own prioperties and methods;
+            JsonString = ParseRecord(line, 2);
         }
 
         public int Score { get; set; }
-        public string ID { get; set; }
+        public string JsonString { get; set; }
 
         private static string ParseRecord(string s, int part)
         {

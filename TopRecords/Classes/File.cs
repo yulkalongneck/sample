@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace TopRecords.Files
 {
-    //File has Name, many Records, and top results
+    //File has Name, many Records
     public class File
     {
         public File(string name)
@@ -36,14 +36,18 @@ namespace TopRecords.Files
                     while ((line = reader.ReadLine()) != null)
                     {
                         Record record = new Record(line.Replace(@"\", ""));
+                        //remove any previously added record with score equal to the current record.Score
+                        this.Records.RemoveAll(r => r.Score == record.Score);
+
+                        // add the current record
                         this.Records.Add(record);
                     }
                 }
       
             }
-            catch (Exception exp)
+            catch (Exception ex)
             {
-                Console.WriteLine(exp.Message);
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -67,7 +71,7 @@ namespace TopRecords.Files
             {
                 topRecords = this.Records.Take(top).ToList();
 
-                // write result:  top N if Record.Data is a valid json object
+                //check if json string is a valid json; if false- abort;
                 foreach (var r in topRecords)
                 {
                     JsonValue.Parse(r.ID);
@@ -84,6 +88,7 @@ namespace TopRecords.Files
             return 0;
         }
 
+        //write Results to a console;
         private static void WriteTopResults(List<Record> topRecords)
         {
             List<Result> results = new List<Result>();
