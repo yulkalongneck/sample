@@ -21,14 +21,12 @@ namespace TopRecords.Classes
             string result = String.Empty;
             try
             {
-                if(part == 1)
-                {
-                    result = s.Substring(0, index).Trim();
-                } else if(part == 2)
-                {
-                   result = s.Substring(index + 1).Trim();
+                if(part == 1){
+                   result = s.Substring(0, index).Trim();
                 }
-               
+                else if(part == 2){
+                   result = s.Substring(index + 1).Trim();
+                }               
             }
             catch (Exception ex)
             {

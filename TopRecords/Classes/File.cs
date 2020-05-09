@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using TopRecords.Classes;
 using System.Json;
+using Newtonsoft.Json;
 
 namespace TopRecords.Files
 {
@@ -59,19 +60,18 @@ namespace TopRecords.Files
             }
         }
 
-        public dynamic GetTop(int top)
+        public int GetTop(int top)
         {
-            List<Record> result = new List<Record>();
+            List<Record> topRecords = new List<Record>();
             try
             {
-                result = this.Records.Take(top).ToList();
+                topRecords = this.Records.Take(top).ToList();
 
                 // write result:  top N if Record.Data is a valid json object
-                foreach (var r in result)
+                foreach (var r in topRecords)
                 {
-                    var valid = JsonValue.Parse(r.ID);
-                }
-                
+                    JsonValue.Parse(r.ID);
+                }  
             }
             catch
             {
@@ -80,7 +80,19 @@ namespace TopRecords.Files
                 return -1;
             }
 
-            return result;
+            WriteTopResults(topRecords);
+            return 0;
+        }
+
+        private static void WriteTopResults(List<Record> topRecords)
+        {
+            List<Result> results = new List<Result>();
+            foreach (var r in topRecords)
+            {
+                results.Add(new Result(r.Score, r.ID)); 
+            }
+            var json = JsonConvert.SerializeObject(results, Formatting.Indented);
+            Console.WriteLine(json);
         }
     }
 }
