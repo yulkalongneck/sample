@@ -35,12 +35,21 @@ namespace TopRecords.DataFiles
                     // Read line by line  
                     while ((line = reader.ReadLine()) != null)
                     {
-                        Record record = new Record(line.Replace(@"\", ""));
-                        //remove any previously added record with score equal to the current record.Score
-                        this.Records.RemoveAll(r => r.Score == record.Score);
+                        try
+                        {
+                            Record record = new Record(line.Replace(@"\", ""));
+                            this.Records.RemoveAll(r => r.Score == record.Score);
 
-                        // add the current record
-                        this.Records.Add(record);
+                            // add the current record
+                            this.Records.Add(record);
+                        }
+                        catch 
+                        {
+                            Console.WriteLine("invalid json format No JSON object could be decoded");
+                            Console.WriteLine("THIS IS NOT JSON");
+                        }
+                        //remove any previously added record with score equal to the current record.Score
+                        
                     }
                 }
       

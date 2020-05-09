@@ -38,7 +38,9 @@ namespace TopRecords.Classes
             }
             catch (Exception ex)
             {
-                Console.WriteLine(ex.Message.ToString());
+                Console.WriteLine("invalid json format No JSON object could be decoded");
+                Console.WriteLine("THIS IS NOT JSON");
+                throw new Exception(ex.Message);
             }
             return result;
         }
