@@ -1,4 +1,4 @@
-```Console Input/Output:
+`Console Input/Output:
 Please insert full file path:
 /Users/julka/Desktop/highest_score_recs.data
 Please insert max n of results (int):
@@ -16,7 +16,7 @@ Please insert max n of results (int):
     "score": 11269569,
     "id": "7ec85fe3aa3c4dd599e23111e7abf5c1"
   }
-]```
+]`
 
 # Highest Scores
 ​
