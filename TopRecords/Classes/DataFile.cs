@@ -2,11 +2,10 @@
 using System.IO;
 using System.Collections.Generic;
 using System.Linq;
-using TopRecords.Classes;
 using System.Json;
 using Newtonsoft.Json;
 
-namespace TopRecords.DataFiles
+namespace TopRecords.Classes
 {
     //File has path, many Records
     public class DataFile
