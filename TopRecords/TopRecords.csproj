@@ -6,7 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="File\" />
+    <Folder Include="Classes\" />
     <Folder Include="Helpers\" />
   </ItemGroup>
 </Project>
