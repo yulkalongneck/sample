@@ -37,7 +37,7 @@ namespace TopRecords.Files
                         this.Records.Add(record);
                     }
                 }
-                this.Records = this.Records.OrderBy(x => x.Score).ToList();
+      
             }
             catch (Exception exp)
             {
@@ -45,6 +45,19 @@ namespace TopRecords.Files
             }
 
         }
+
+        public void SortDesc()
+        {
+            try
+            {
+                this.Records = this.Records.OrderByDescending(x => x.Score).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
 
     }
 }

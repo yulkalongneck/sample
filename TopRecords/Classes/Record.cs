@@ -6,10 +6,10 @@ namespace TopRecords.Classes
         public Record(string line)
         {
             //find score
-            Score = Convert.ToInt32(line.Split(':')[0]);
+            Score = Convert.ToInt32(ParseRecord(line,1));
 
             //temp assign the json string object as an id
-            ID = line.Split(':')[1];
+            ID = ParseRecord(line, 2);
         }
 
         //json serialize to score
@@ -20,7 +20,7 @@ namespace TopRecords.Classes
         private static string ParseRecord(string s, int part)
         {
             int index = s.IndexOf(':');
-            string result;
+            string result = String.Empty;
             try
             {
                 if(part == 1)
@@ -28,10 +28,9 @@ namespace TopRecords.Classes
                     result = s.Substring(0, index);
                 } else if(part == 2)
                 {
-
+                   result = s.Substring(index + 1);
                 }
-                string score = 
-                string json = s.Substring(index + 1);
+               
             }
             catch (Exception ex)
             {
