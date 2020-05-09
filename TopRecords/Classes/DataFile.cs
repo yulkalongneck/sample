@@ -6,12 +6,12 @@ using TopRecords.Classes;
 using System.Json;
 using Newtonsoft.Json;
 
-namespace TopRecords.Files
+namespace TopRecords.DataFiles
 {
     //File has Name, many Records
-    public class File
+    public class DataFile
     {
-        public File(string name)
+        public DataFile(string name)
         {
             Name = name;
             Records = new List<Record>();
@@ -29,7 +29,7 @@ namespace TopRecords.Files
             {
                 // using StreamReader read/import a file
                 // and add each line to a string list
-                using (StreamReader reader = new StreamReader("/Users/julka/Desktop/" + this.Name))
+                using (StreamReader reader = new StreamReader(Path.Combine(Environment.CurrentDirectory, @"/", this.Name)))
                 {
                     string line;
                     // Read line by line  

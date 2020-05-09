@@ -1,6 +1,6 @@
 ﻿using System;
 using System.IO;
-using TopRecords.Files;
+using TopRecords.DataFiles;
 
 namespace TopRecords
 {
@@ -10,14 +10,15 @@ namespace TopRecords
         {
             Console.WriteLine("Please insert file name");
             var filename = Console.ReadLine();
-            Console.WriteLine(Path.Combine(Environment.CurrentDirectory, @"./", filename));
+            Console.WriteLine(filename);
 
             Console.WriteLine("Number of top results (int):");
             var nScores = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine(nScores);
             //assume that inputs are valid
 
             //read file
-            File file = new File(filename);
+            DataFile file = new DataFile(filename);
             file.GetFile();
 
             // Keeping it as a public method
