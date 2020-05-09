@@ -1,5 +1,5 @@
-## TEST FILE IN /TopRecords/..
-(Console.WriteLine(Path.Combine(Environment.CurrentDirectory, @"/", filename));)
+## TEST FILE IN TopRecords/TopRecords/bin/Debug/netcoreapp3.1
+
 
 
 # Highest Scores
