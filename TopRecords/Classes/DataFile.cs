@@ -31,7 +31,8 @@ namespace TopRecords.Classes
                 using (StreamReader reader = new StreamReader(this.FilePath))
                 {
                     string line;
-                    // Read line by line  
+                    // Read line by line
+                    Dictionary<int, bool> recs = new Dictionary<int, bool>();
                     while ((line = reader.ReadLine()) != null)
                     {
                         try
@@ -39,10 +40,14 @@ namespace TopRecords.Classes
                             Record record = new Record(line.Replace(@"\", ""));
                             //remove any previously added record with score equal to the current record.Score
 
-                            this.Records.RemoveAll(r => r.Score == record.Score);
-
+                            if (recs[record.Score])
+                            {
+                                this.Records.RemoveAll(r => r.Score == record.Score);
+                            }
+                            
                             // add the current record
                             this.Records.Add(record);
+                            recs[record.Score] = true;
                         }
                         catch 
                         {
@@ -51,6 +56,7 @@ namespace TopRecords.Classes
                         }
                      
                     }
+                    reader.Dispose();
                 }
       
             }
