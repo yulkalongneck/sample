@@ -73,27 +73,24 @@ namespace TopRecords.Classes
             }
         }
 
-        public int GetTop(int top)
+        public void GetTop(int top)
         {
-            List<Record> topRecords = new List<Record>();
+
             try
             {
-                topRecords = this.Records.Take(top).ToList();
+                List<Record> topRecords = this.Records.Take(top).ToList();
                 //check if json string is a valid json; if false- abort;
                 foreach (var r in topRecords)
                 {
                     r.ID = JsonValue.Parse(r.JsonString)["id"];
-                }  
+                }
+                WriteTopResults(topRecords);
             }
             catch
             {
                 Console.WriteLine("invalid json format No JSON object could be decoded");
                 Console.WriteLine("THIS IS NOT JSON");
-                return -1;
             }
-
-            WriteTopResults(topRecords);
-            return 0;
         }
 
         //write Results to a console;
@@ -107,8 +104,7 @@ namespace TopRecords.Classes
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-            }
-            
+            } 
         }
     }
 }

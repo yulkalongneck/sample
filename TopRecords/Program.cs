@@ -7,11 +7,11 @@ namespace TopRecords
     {
         static int Main(string[] args)
         {
-            Console.WriteLine("Please insert full file path:");
-            var filepath = Console.ReadLine();
+            //Console.WriteLine("Please insert full file path:");
+            var filepath = args[0];
 
-            Console.WriteLine("Please insert max n of results (int):");
-            var nScores = Convert.ToInt32(Console.ReadLine());
+            //Console.WriteLine("Please insert max n of results (int):");
+            var nScores = Convert.ToInt32(args[1]);
             //assume that inputs are valid
 
             //read file
