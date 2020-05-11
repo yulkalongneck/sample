@@ -1,4 +1,6 @@
 ```
+Run the app from VS or via command line (dotnet run -p TopRecords/TopRecords.csproj)
+
 Console Input/Output:
 Please insert full file path:
 /Users/julka/Desktop/highest_score_recs.data
